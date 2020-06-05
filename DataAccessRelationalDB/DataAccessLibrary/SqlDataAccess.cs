@@ -25,11 +25,11 @@ namespace DataAccessLibrary
             }
         }
 
-        public void SaveData<T>(string sqlStatement, T parameteres, string connString)
+        public void SaveData<T>(string sqlStatement, T parameters, string connString)
         {
             using (IDbConnection connection = new SqlConnection(connString))
             {
-                connection.Execute(sqlStatement, parameteres);
+                connection.Execute(sqlStatement, parameters);
             }
         }
     }

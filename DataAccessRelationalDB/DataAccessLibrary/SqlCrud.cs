@@ -92,5 +92,11 @@ namespace DataAccessLibrary
                 db.SaveData(sql, new { ContactId = contactId, EmailAddressId = i.Id }, connString);
             }
         }
+
+        public void UpdateContactName(BasicContactModel contact)
+        {
+            string sql = "UPDATE dbo.Contacts SET FirstName = @FirstName, LastName = @LastName WHERE Id = @Id;";
+            db.SaveData(sql, contact, connString);
+        }
     }
 }

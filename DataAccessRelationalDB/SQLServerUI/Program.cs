@@ -18,9 +18,11 @@ namespace SQLServerUI
 
             //ReadAllContacts(sql);
 
-            ReadContact(sql, 3);
+            //ReadContact(sql, 3);
 
             //CreateNewContact(sql);
+
+            UpdateContact(sql);
 
             Console.ReadLine();
         }
@@ -75,6 +77,17 @@ namespace SQLServerUI
             var contact = sql.GetFullContactById(id);
 
             Console.WriteLine($"Id: {contact.BasicInfo.Id}, FirstName: {contact.BasicInfo.FirstName}, LastName: {contact.BasicInfo.LastName}");
+        }
+
+        private static void UpdateContact(SqlCrud sql)
+        {
+            BasicContactModel contact = new BasicContactModel
+            {
+                Id = 1,
+                FirstName = "fName1z",
+                LastName = "lName1"
+            };
+            sql.UpdateContactName(contact);
         }
     }
 }
