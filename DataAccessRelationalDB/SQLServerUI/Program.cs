@@ -18,9 +18,30 @@ namespace SQLServerUI
 
             //ReadAllContacts(sql);
 
-            ReadContact(sql, 1);
+            ReadContact(sql, 3);
+
+            //CreateNewContact(sql);
 
             Console.ReadLine();
+        }
+
+        private static void CreateNewContact(SqlCrud sql)
+        {
+            FullContactModel nc = new FullContactModel
+            {
+                BasicInfo = new BasicContactModel
+                {
+                    FirstName = "ncFname",
+                    LastName = "ncLname"
+                }
+            };
+
+            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail@mail.com" });
+            nc.EmailAddresses.Add(new EmailAddressModel { Id = 2, EmailAddress = "test2@mail.com" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-213-3333" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { Id = 1, PhoneNumber = "555-123-1111" });
+
+            sql.CreateContact(nc);
         }
 
         private static string GetConnectionString(string connectionStringName = "Default")
