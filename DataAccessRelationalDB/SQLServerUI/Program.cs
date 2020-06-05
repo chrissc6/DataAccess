@@ -17,17 +17,12 @@ namespace SQLServerUI
             SqlCrud sql = new SqlCrud(GetConnectionString());
 
             //ReadAllContacts(sql);
-
             //ReadContact(sql, 3);
-
             //CreateNewContact(sql);
-
             //UpdateContact(sql);
-
-            RemovePhoneNumberFromContact(sql, 1, 1);
+            //RemovePhoneNumberFromContact(sql, 1, 1);
 
             Console.WriteLine("done");
-
             Console.ReadLine();
         }
 
