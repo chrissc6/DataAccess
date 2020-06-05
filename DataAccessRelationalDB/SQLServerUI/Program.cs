@@ -22,7 +22,11 @@ namespace SQLServerUI
 
             //CreateNewContact(sql);
 
-            UpdateContact(sql);
+            //UpdateContact(sql);
+
+            RemovePhoneNumberFromContact(sql, 1, 1);
+
+            Console.WriteLine("done");
 
             Console.ReadLine();
         }
@@ -88,6 +92,11 @@ namespace SQLServerUI
                 LastName = "lName1"
             };
             sql.UpdateContactName(contact);
+        }
+
+        private static void RemovePhoneNumberFromContact(SqlCrud sql, int contactId, int phoneNumberId)
+        {
+            sql.RemovePhoneNumber(contactId, phoneNumberId);
         }
     }
 }

@@ -98,5 +98,20 @@ namespace DataAccessLibrary
             string sql = "UPDATE dbo.Contacts SET FirstName = @FirstName, LastName = @LastName WHERE Id = @Id;";
             db.SaveData(sql, contact, connString);
         }
+
+        public void RemovePhoneNumber(int contactId, int phoneNumId)
+        {
+            string sql = "SELECT Id, ContactId, PhoneNumberId FROM dbo.ContactPhoneNumbers WHERE PhoneNumberId = @PhoneNumberId;";
+            var links = db.LoadData<ContactPhoneNumberModel, dynamic>(sql, new { PhoneNumberId = phoneNumId }, connString);
+
+            sql = "DELETE FROM dbo.ContactPhoneNumbers WHERE ContactId = @ContactId AND PhoneNumberId = @PhoneNumberId";
+            db.SaveData(sql, new { PhoneNumberID = phoneNumId, ContactId = contactId }, connString);
+
+            if (links.Count == 1)
+            {
+                sql = "DELETE FROM dbo.PhoneNumbers WHERE Id = @PhoneNumberId";
+                db.SaveData(sql, new { PhoneNumberID = phoneNumId }, connString);
+            }
+        }
     }
 }
