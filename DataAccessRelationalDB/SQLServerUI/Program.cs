@@ -16,7 +16,9 @@ namespace SQLServerUI
             //instance of sqlcrud class, and pass in connstring
             SqlCrud sql = new SqlCrud(GetConnectionString());
 
-            ReadAllContacts(sql);
+            //ReadAllContacts(sql);
+
+            ReadContact(sql, 1);
 
             Console.ReadLine();
         }
@@ -45,6 +47,13 @@ namespace SQLServerUI
             {
                 Console.WriteLine($"Id: {i.Id}, FirstName: {i.FirstName}, LastName: {i.LastName}");
             }
+        }
+
+        private static void ReadContact(SqlCrud sql, int id)
+        {
+            var contact = sql.GetFullContactById(id);
+
+            Console.WriteLine($"Id: {contact.BasicInfo.Id}, FirstName: {contact.BasicInfo.FirstName}, LastName: {contact.BasicInfo.LastName}");
         }
     }
 }
