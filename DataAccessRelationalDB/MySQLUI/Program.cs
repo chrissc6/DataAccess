@@ -1,4 +1,5 @@
-﻿using DataAccessLibrary.Models;
+﻿using DataAccessLibrary;
+using DataAccessLibrary.Models;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
@@ -13,7 +14,7 @@ namespace MySQLUI
             //Console.WriteLine(GetConnectionString());
 
             //instance of sqlcrud class, and pass in connstring
-            SQLiteCrud sql = new SQLiteCrud(GetConnectionString());
+            MySQLCrud sql = new MySQLCrud(GetConnectionString());
 
             //ReadAllContacts(sql);
             //CreateNewContact(sql);
@@ -40,7 +41,7 @@ namespace MySQLUI
             return output;
         }
 
-        private static void ReadAllContacts(SQLiteCrud sql)
+        private static void ReadAllContacts(MySQLCrud sql)
         {
             //calls sqlcrud to get all contacts
             var rows = sql.GetAllContacts();
@@ -51,7 +52,7 @@ namespace MySQLUI
             }
         }
 
-        private static void CreateNewContact(SQLiteCrud sql)
+        private static void CreateNewContact(MySQLCrud sql)
         {
             FullContactModel nc = new FullContactModel
             {
@@ -70,14 +71,14 @@ namespace MySQLUI
             sql.CreateContact(nc);
         }
 
-        private static void ReadContact(SQLiteCrud sql, int id)
+        private static void ReadContact(MySQLCrud sql, int id)
         {
             var contact = sql.GetFullContactById(id);
 
             Console.WriteLine($"Id: {contact.BasicInfo.Id}, FirstName: {contact.BasicInfo.FirstName}, LastName: {contact.BasicInfo.LastName}");
         }
 
-        private static void UpdateContact(SQLiteCrud sql)
+        private static void UpdateContact(MySQLCrud sql)
         {
             BasicContactModel contact = new BasicContactModel
             {
@@ -88,7 +89,7 @@ namespace MySQLUI
             sql.UpdateContactName(contact);
         }
 
-        private static void RemovePhoneNumberFromContact(SQLiteCrud sql, int contactId, int phoneNumberId)
+        private static void RemovePhoneNumberFromContact(MySQLCrud sql, int contactId, int phoneNumberId)
         {
             sql.RemovePhoneNumber(contactId, phoneNumberId);
         }
