@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace DataAccessLibrary
 {
-    public class SqlLiteDataAccess
+    class SQLiteDataAccess
     {
         public List<T> LoadData<T, U>(string sqlStatement, U parameters, string connString)
         {
