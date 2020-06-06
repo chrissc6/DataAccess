@@ -11,6 +11,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQLContactsDB", "SQLContact
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteUI", "SQLiteUI\SQLiteUI.csproj", "{EEFC547B-241E-47E2-B4DC-FE32A7E37DD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQLUI", "MySQLUI\MySQLUI.csproj", "{0DF5B713-231B-4094-92F5-A3087E358430}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{EEFC547B-241E-47E2-B4DC-FE32A7E37DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEFC547B-241E-47E2-B4DC-FE32A7E37DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEFC547B-241E-47E2-B4DC-FE32A7E37DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DF5B713-231B-4094-92F5-A3087E358430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DF5B713-231B-4094-92F5-A3087E358430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DF5B713-231B-4094-92F5-A3087E358430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DF5B713-231B-4094-92F5-A3087E358430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
