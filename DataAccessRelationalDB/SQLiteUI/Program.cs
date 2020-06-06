@@ -16,9 +16,9 @@ namespace SQLiteUI
             //instance of sqlcrud class, and pass in connstring
             SQLiteCrud sql = new SQLiteCrud(GetConnectionString());
 
-            ReadAllContacts(sql);
+            //ReadAllContacts(sql);
+            CreateNewContact(sql);
             //ReadContact(sql, 3);
-            //CreateNewContact(sql);
             //UpdateContact(sql);
             //RemovePhoneNumberFromContact(sql, 1, 1);
 
@@ -52,13 +52,6 @@ namespace SQLiteUI
             }
         }
 
-        private static void ReadContact(SQLiteCrud sql, int id)
-        {
-            var contact = sql.GetFullContactById(id);
-
-            Console.WriteLine($"Id: {contact.BasicInfo.Id}, FirstName: {contact.BasicInfo.FirstName}, LastName: {contact.BasicInfo.LastName}");
-        }
-
         private static void CreateNewContact(SQLiteCrud sql)
         {
             FullContactModel nc = new FullContactModel
@@ -76,6 +69,13 @@ namespace SQLiteUI
             nc.PhoneNumbers.Add(new PhoneNumberModel { Id = 1, PhoneNumber = "555-123-1111" });
 
             sql.CreateContact(nc);
+        }
+
+        private static void ReadContact(SQLiteCrud sql, int id)
+        {
+            var contact = sql.GetFullContactById(id);
+
+            Console.WriteLine($"Id: {contact.BasicInfo.Id}, FirstName: {contact.BasicInfo.FirstName}, LastName: {contact.BasicInfo.LastName}");
         }
 
         private static void UpdateContact(SQLiteCrud sql)
