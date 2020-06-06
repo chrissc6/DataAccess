@@ -22,7 +22,7 @@ namespace SQLServerUI
             //UpdateContact(sql);
             //RemovePhoneNumberFromContact(sql, 1, 1);
 
-            Console.WriteLine("done");
+            Console.WriteLine("done sql server");
             Console.ReadLine();
         }
 

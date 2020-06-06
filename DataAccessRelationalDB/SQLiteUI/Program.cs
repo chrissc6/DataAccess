@@ -20,7 +20,7 @@ namespace SQLiteUI
             //UpdateContact(sql);
             //RemovePhoneNumberFromContact(sql, 1, 1);
 
-            Console.WriteLine("done");
+            Console.WriteLine("done sqlite");
             Console.ReadLine();
         }
 
