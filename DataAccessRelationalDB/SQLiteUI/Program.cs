@@ -17,10 +17,10 @@ namespace SQLiteUI
             SQLiteCrud sql = new SQLiteCrud(GetConnectionString());
 
             //ReadAllContacts(sql);
-            CreateNewContact(sql);
-            //ReadContact(sql, 3);
+            //CreateNewContact(sql);
+            //ReadContact(sql, 2);
             //UpdateContact(sql);
-            //RemovePhoneNumberFromContact(sql, 1, 1);
+            RemovePhoneNumberFromContact(sql, 1, 1);
 
             Console.WriteLine("done sqlite");
             Console.ReadLine();
