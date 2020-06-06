@@ -17,32 +17,13 @@ namespace SQLServerUI
             SqlCrud sql = new SqlCrud(GetConnectionString());
 
             //ReadAllContacts(sql);
-            //ReadContact(sql, 3);
             //CreateNewContact(sql);
+            //ReadContact(sql, 3);
             //UpdateContact(sql);
             //RemovePhoneNumberFromContact(sql, 1, 1);
 
             Console.WriteLine("done sql server");
             Console.ReadLine();
-        }
-
-        private static void CreateNewContact(SqlCrud sql)
-        {
-            FullContactModel nc = new FullContactModel
-            {
-                BasicInfo = new BasicContactModel
-                {
-                    FirstName = "ncFname",
-                    LastName = "ncLname"
-                }
-            };
-
-            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail@mail.com" });
-            nc.EmailAddresses.Add(new EmailAddressModel { Id = 2, EmailAddress = "test2@mail.com" });
-            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-213-3333" });
-            nc.PhoneNumbers.Add(new PhoneNumberModel { Id = 1, PhoneNumber = "555-123-1111" });
-
-            sql.CreateContact(nc);
         }
 
         private static string GetConnectionString(string connectionStringName = "Default")
@@ -69,6 +50,25 @@ namespace SQLServerUI
             {
                 Console.WriteLine($"Id: {i.Id}, FirstName: {i.FirstName}, LastName: {i.LastName}");
             }
+        }
+
+        private static void CreateNewContact(SqlCrud sql)
+        {
+            FullContactModel nc = new FullContactModel
+            {
+                BasicInfo = new BasicContactModel
+                {
+                    FirstName = "ncFname",
+                    LastName = "ncLname"
+                }
+            };
+
+            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail@mail.com" });
+            nc.EmailAddresses.Add(new EmailAddressModel { Id = 2, EmailAddress = "test2@mail.com" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-213-3333" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { Id = 1, PhoneNumber = "555-123-1111" });
+
+            sql.CreateContact(nc);
         }
 
         private static void ReadContact(SqlCrud sql, int id)
