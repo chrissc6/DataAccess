@@ -14,6 +14,19 @@ namespace MongoDBUI
         static void Main(string[] args)
         {
             db = new MongoDBDataAccess("MongoContactsDB", GetConnectionString());
+
+            ContactModel nc = new ContactModel
+            {
+                FirstName = "nFname1",
+                LastName = "nLname1"
+            };
+            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail1@mail.com" });
+            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail2@mail.com" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-123-1111" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-123-2222" });
+
+            CreateContact(nc);
+
             Console.WriteLine("done mongo");
             Console.ReadLine();
         }
