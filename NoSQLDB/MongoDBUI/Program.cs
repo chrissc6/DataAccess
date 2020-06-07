@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace MongoDBUI
 {
@@ -6,7 +8,23 @@ namespace MongoDBUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("done mongo");
+            Console.ReadLine();
+        }
+
+        private static string GetConnectionString(string connectionStringName = "Default")
+        {
+            string output = "";
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+
+            var config = builder.Build();
+
+            output = config.GetConnectionString(connectionStringName);
+
+            return output;
         }
     }
 }
