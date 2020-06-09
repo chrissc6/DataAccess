@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFileUI", "TextFileUI\TextFileUI.csproj", "{3B05E906-4071-48E8-A1BE-DEBAAD4BFABC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextFileUI", "TextFileUI\TextFileUI.csproj", "{3B05E906-4071-48E8-A1BE-DEBAAD4BFABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{C8CB4B3F-A83C-41F6-B6DD-A6AFF200712D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3B05E906-4071-48E8-A1BE-DEBAAD4BFABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B05E906-4071-48E8-A1BE-DEBAAD4BFABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B05E906-4071-48E8-A1BE-DEBAAD4BFABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CB4B3F-A83C-41F6-B6DD-A6AFF200712D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CB4B3F-A83C-41F6-B6DD-A6AFF200712D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CB4B3F-A83C-41F6-B6DD-A6AFF200712D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CB4B3F-A83C-41F6-B6DD-A6AFF200712D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
