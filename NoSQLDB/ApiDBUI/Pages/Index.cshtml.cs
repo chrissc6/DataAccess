@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,6 +24,23 @@ namespace ApiDBUI.Pages
         public void OnGet()
         {
 
+        }
+
+        private async Task GetAllContacts()
+        {
+            var client = httpClientFactory.CreateClient();
+            var response = await client.GetAsync("https://localhost:44381/api/Contacts");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var options = new JsonSerializerOptions
+                {
+                    //when mapping back to objects ignore case
+                    PropertyNameCaseInsensitive = true
+                };
+
+                string responseText = await response.Content.ReadAsStringAsync();
+            }
         }
     }
 }
