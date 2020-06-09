@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 namespace ApiDBUI.Models
 {
     //used: Edit>Paste Special>Paste JSON As Classes
-    public class Rootobject
+    public class ContactModel
     {
-        public string id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public Emailaddress[] emailAddresses { get; set; }
-        public Phonenumber[] phoneNumbers { get; set; }
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public List<EmailAddressModel> EmailAddresses { get; set; }
+        public List<PhoneNumberModel> PhoneNumbers { get; set; }
     }
 
-    public class Emailaddress
+    public class EmailAddressModel
     {
-        public string emailAddress { get; set; }
+        public string EmailAddress { get; set; }
     }
 
-    public class Phonenumber
+    public class PhoneNumberModel
     {
-        public string phoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }
