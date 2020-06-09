@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DataAccessLibrary
 {
@@ -35,6 +36,54 @@ namespace DataAccessLibrary
             //connect to a container
             //container are like tables
             container = database.GetContainer(containerName);
+        }
+
+        public async Task<List<T>> LoadRecordsAsync<T>()
+        {
+            string sql = "SELECT * FROM c";
+
+            QueryDefinition queryDefinition = new QueryDefinition(sql);
+            FeedIterator<T> feedIterator = container.GetItemQueryIterator<T>(queryDefinition);
+
+            List<T> output = new List<T>();
+
+            while (feedIterator.HasMoreResults)
+            {
+                FeedResponse<T> currentResultSet = await feedIterator.ReadNextAsync();
+
+                foreach (var i in currentResultSet)
+                {
+                    output.Add(i);
+                }
+            }
+
+            return output;
+        }
+
+        public async Task<T> LoadRecordByIdAsync<T>(string id)
+        {
+            string sql = "SELECT * FROM c WHERE c.id = @Id";
+
+            QueryDefinition queryDefinition = new QueryDefinition(sql).WithParameter("@Id", id);
+            FeedIterator<T> feedIterator = container.GetItemQueryIterator<T>(queryDefinition);
+
+            while (feedIterator.HasMoreResults)
+            {
+                FeedResponse<T> currentResultSet = await feedIterator.ReadNextAsync();
+
+                foreach (var i in currentResultSet)
+                {
+                    return i;
+                }
+            }
+
+            //or return a null
+            throw new Exception("Item not found");
+        }
+
+        public async Task UpsertRecordAsync<T>(T record)
+        {
+            await container.UpsertItemAsync(record);
         }
     }
 }
