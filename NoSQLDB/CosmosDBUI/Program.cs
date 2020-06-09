@@ -3,16 +3,43 @@ using DataAccessLibrary.Models;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace CosmosDBUI
 {
     class Program
     {
         private static CosmosDBDataAccess db;
-        static void Main(string[] args)
+
+        static async Task Main(string[] args)
         {
             var ci = GetCosmosInfo();
             db = new CosmosDBDataAccess(ci.endpointUrl, ci.primaryKey, ci.dbName, ci.containerName);
+
+            ContactModel nc = new ContactModel
+            {
+                FirstName = "nFname1",
+                LastName = "nLname1"
+            };
+            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail1@mail.com" });
+            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail2@mail.com" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-123-1111" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-123-2222" });
+
+            ContactModel nc2 = new ContactModel
+            {
+                FirstName = "nFname2",
+                LastName = "nLname2"
+            };
+            nc2.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "nc2Email1@mail.com" });
+            nc2.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "nc2Email2@mail.com" });
+            nc2.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-456-1111" });
+            nc2.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-456-2222" });
+
+            await CreateContactAsync(nc);
+            await CreateContactAsync(nc2);
+
+            await GetAllContactsAsync();
 
             Console.WriteLine("done cosmos");
             Console.ReadLine();
@@ -36,12 +63,19 @@ namespace CosmosDBUI
             return output;
         }
 
-        private static void CreateContact(ContactModel contact)
+        private static async Task CreateContactAsync(ContactModel contact)
         {
+            await db.UpsertRecordAsync(contact);
         }
 
-        private static void GetAllContacts()
+        private static async Task GetAllContactsAsync()
         {
+            var contacts = await db.LoadRecordsAsync<ContactModel>();
+
+            foreach (var i in contacts)
+            {
+                Console.WriteLine($"Id: {i.Id}, FirstName: {i.FirstName}, LastName: {i.LastName}");
+            }
         }
 
         private static void GetContactById(string id)
