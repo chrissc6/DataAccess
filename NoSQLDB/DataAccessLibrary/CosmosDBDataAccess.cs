@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Cosmos;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -84,6 +85,11 @@ namespace DataAccessLibrary
         public async Task UpsertRecordAsync<T>(T record)
         {
             await container.UpsertItemAsync(record);
+        }
+
+        public async Task DeleteRecordAsync<T>(string id, string partitionKey)
+        {
+            await container.DeleteItemAsync<T>(id, new PartitionKey(partitionKey));
         }
     }
 }

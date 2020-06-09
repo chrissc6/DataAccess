@@ -49,6 +49,9 @@ namespace CosmosDBUI
 
             //await RemovePhoneNumberAsync("555-123-2222", "603709db-cc46-4944-963c-b72935eee71d");
 
+            //my partitionKey was lastName
+            //await RemoveContactAsync("603709db-cc46-4944-963c-b72935eee71d", "nLname1");
+
             Console.WriteLine("done cosmos");
             Console.ReadLine();
         }
@@ -111,8 +114,9 @@ namespace CosmosDBUI
             await db.UpsertRecordAsync(contact);
         }
 
-        public static async Task RemoveContactAsync(string id)
+        public static async Task RemoveContactAsync(string id, string partitionKey)
         {
+            await db.DeleteRecordAsync<ContactModel>(id, partitionKey);
         }
     }
 }
