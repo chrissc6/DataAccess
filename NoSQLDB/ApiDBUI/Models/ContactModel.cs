@@ -14,14 +14,4 @@ namespace ApiDBUI.Models
         public List<EmailAddressModel> EmailAddresses { get; set; }
         public List<PhoneNumberModel> PhoneNumbers { get; set; }
     }
-
-    public class EmailAddressModel
-    {
-        public string EmailAddress { get; set; }
-    }
-
-    public class PhoneNumberModel
-    {
-        public string PhoneNumber { get; set; }
-    }
 }
