@@ -11,6 +11,11 @@ namespace DataAccessLibrary
     {
         public List<ContactModel> ReadAllRecords(string txtFl)
         {
+            if (File.Exists(txtFl) == false)
+            {
+                return new List<ContactModel>();
+            }
+
             var lines = File.ReadAllLines(txtFl);
             List<ContactModel> output = new List<ContactModel>();
 

@@ -41,7 +41,12 @@ namespace TextFileUI
                 user2
             };
 
-            Console.WriteLine("Hello World!");
+            CreateContact(user1);
+            CreateContact(user2);
+            GetAllContacts();
+
+            Console.WriteLine("done txtfile");
+            Console.ReadLine();
         }
 
         private static void InitializeConfiguration()
