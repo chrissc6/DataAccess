@@ -22,9 +22,9 @@ namespace ApiDBUI.Pages
             this.httpClientFactory = httpClientFactory;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-
+            await GetAllContacts();
         }
 
         private async Task GetAllContacts()
@@ -45,6 +45,10 @@ namespace ApiDBUI.Pages
                 string responseText = await response.Content.ReadAsStringAsync();
 
                 contacts = JsonSerializer.Deserialize<List<ContactModel>>(responseText, options);
+            }
+            else
+            {
+                throw new Exception(response.ReasonPhrase);
             }
         }
     }
