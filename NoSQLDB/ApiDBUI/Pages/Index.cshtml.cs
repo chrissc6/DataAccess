@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using ApiDBUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -31,6 +32,8 @@ namespace ApiDBUI.Pages
             var client = httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:44381/api/Contacts");
 
+            List<ContactModel> contacts;
+
             if (response.IsSuccessStatusCode)
             {
                 var options = new JsonSerializerOptions
@@ -40,6 +43,8 @@ namespace ApiDBUI.Pages
                 };
 
                 string responseText = await response.Content.ReadAsStringAsync();
+
+                contacts = JsonSerializer.Deserialize<List<ContactModel>>(responseText, options);
             }
         }
     }
