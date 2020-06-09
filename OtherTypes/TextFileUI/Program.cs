@@ -8,10 +8,12 @@ namespace TextFileUI
     class Program
     {
         private static IConfiguration _config;
+        private static string txtFile;
 
         static void Main(string[] args)
         {
             InitializeConfiguration();
+            txtFile = _config.GetValue<string>("TextFile");
 
             Console.WriteLine("Hello World!");
         }
