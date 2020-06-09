@@ -52,5 +52,48 @@ namespace TextFileUI
 
             _config = builder.Build();
         }
+
+        private static void CreateContact(ContactModel contact)
+        {
+            var contacts = db.ReadAllRecords(txtFile);
+
+            contacts.Add(contact);
+
+            db.WriteAllRecords(contacts, txtFile);
+        }
+
+        private static void GetAllContacts()
+        {
+            var contacts = db.ReadAllRecords(txtFile);
+
+            foreach (var i in contacts)
+            {
+                Console.WriteLine($"FirstName: {i.FirstName}, LastName: {i.LastName}");
+            }
+        }
+
+        private static void UpdateContactsFirstName(string firstName)
+        {
+            var contacts = db.ReadAllRecords(txtFile);
+            //could done using the UI...
+            contacts[0].FirstName = firstName;
+            db.WriteAllRecords(contacts, txtFile);
+        }
+
+        public static void RemovePhoneNumber(string phoneNumber)
+        {
+            var contacts = db.ReadAllRecords(txtFile);
+            //could done using the UI...
+            contacts[0].PhoneNumbers.Remove(phoneNumber);
+            db.WriteAllRecords(contacts, txtFile);
+        }
+
+        public static void RemoveContact()
+        {
+            var contacts = db.ReadAllRecords(txtFile);
+            //could done using the UI...
+            contacts.RemoveAt(0);
+            db.WriteAllRecords(contacts, txtFile);
+        }
     }
 }
