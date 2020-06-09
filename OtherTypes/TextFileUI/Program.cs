@@ -41,9 +41,18 @@ namespace TextFileUI
                 user2
             };
 
-            CreateContact(user1);
-            CreateContact(user2);
-            GetAllContacts();
+            //CreateContact(user1);
+            //CreateContact(user2);
+            //GetAllContacts();
+
+            //UpdateContactsFirstName("fName1z");
+            //GetAllContacts();
+
+            //RemovePhoneNumber("555-111-0002");
+            //GetAllContacts();
+
+            //RemoveContact();
+            //GetAllContacts();
 
             Console.WriteLine("done txtfile");
             Console.ReadLine();

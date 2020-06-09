@@ -1,2 +1,1 @@
-fName1,  lName1,  555-111-0001;555-111-0002,  emailA1@mail.com;emailA2@mail.com
-fName2, lName2, 555-222-0001;555-222-0002, emailB1@mail.com;emailB2@mail.com
+fName2,    lName2,    555-222-0001;555-222-0002,    emailB1@mail.com;emailB2@mail.com
