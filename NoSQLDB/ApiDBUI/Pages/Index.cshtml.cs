@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using ApiDBUI.Models;
@@ -24,6 +25,7 @@ namespace ApiDBUI.Pages
 
         public async Task OnGet()
         {
+            await CreateContact();
             await GetAllContacts();
         }
 
@@ -50,6 +52,23 @@ namespace ApiDBUI.Pages
             {
                 throw new Exception(response.ReasonPhrase);
             }
+        }
+
+        private async Task CreateContact()
+        {
+            ContactModel nc = new ContactModel
+            {
+                FirstName = "nFname1",
+                LastName = "nLname1"
+            };
+            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail1@mail.com" });
+            nc.EmailAddresses.Add(new EmailAddressModel { EmailAddress = "ncEmail2@mail.com" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-123-1111" });
+            nc.PhoneNumbers.Add(new PhoneNumberModel { PhoneNumber = "555-123-2222" });
+
+            var client = httpClientFactory.CreateClient();
+            var response = await client.PostAsync("https://localhost:44381/api/Contacts", new StringContent(JsonSerializer.Serialize(nc), Encoding.UTF8, "application/json"));
+
         }
     }
 }
