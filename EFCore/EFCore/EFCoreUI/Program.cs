@@ -11,7 +11,8 @@ namespace EFCoreUI
         static void Main(string[] args)
         {
             //CreateContact();
-            ReadAll();
+            //ReadAll();
+            ReadById(1);
             Console.WriteLine("done ef");
             Console.ReadLine();
         }
@@ -57,6 +58,15 @@ namespace EFCoreUI
                 {
                     Console.WriteLine($"{i.FirstName}, {i.LastName}");
                 }
+            }
+        }
+
+        private static void ReadById(int id)
+        {
+            using (var db = new ContactContext())
+            {
+                var i = db.Contacts.Where(x => x.Id == id).First();
+                Console.WriteLine($"{i.FirstName}, {i.LastName}");
             }
         }
     }
