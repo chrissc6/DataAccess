@@ -6,7 +6,8 @@ namespace LinqUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("done linq");
+            Console.ReadLine();
         }
     }
 }

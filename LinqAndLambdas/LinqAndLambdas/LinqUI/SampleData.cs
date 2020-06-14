@@ -4,7 +4,11 @@ using System.Text;
 
 namespace LinqUI
 {
-    class SampleData
+    public static class SampleData
     {
+        public static void GetData()
+        {
+
+        }
     }
 }
