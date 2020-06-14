@@ -1,5 +1,6 @@
 ﻿using EFCoreUI.DataAccess;
 using EFCoreUI.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -9,7 +10,7 @@ namespace EFCoreUI
     {
         static void Main(string[] args)
         {
-            CreateContact();
+            //CreateContact();
             ReadAll();
             Console.WriteLine("done ef");
             Console.ReadLine();
@@ -38,7 +39,19 @@ namespace EFCoreUI
         {
             using (var db = new ContactContext())
             {
-                var records = db.Contacts.ToList();
+                var records = db.Contacts
+                    .Include(e => e.EmailAddresses)
+                    .Include(p => p.PhoneNumbers)
+                    .ToList();
+
+                /// <summary>
+                /// pulled from sql profiler
+                /// SELECT [c].[Id], [c].[FirstName], [c].[LastName], [e].[Id], [e].[ContactId], [e].[EmailAddress], [p].[Id], [p].[ContactId], [p].[PhoneNumber]
+                /// FROM[Contacts] AS[c]
+                /// LEFT JOIN[EmailAddresses] AS[e] ON[c].[Id] = [e].[ContactId]
+                /// LEFT JOIN[PhoneNumbers] AS[p] ON[c].[Id] = [p].[ContactId]
+                /// ORDER BY[c].[Id], [e].[Id], [p].[Id]
+                /// </summary>
 
                 foreach (var i in records)
                 {
