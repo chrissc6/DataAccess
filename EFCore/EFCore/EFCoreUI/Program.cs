@@ -12,7 +12,8 @@ namespace EFCoreUI
         {
             //CreateContact();
             //ReadAll();
-            CreateContact2();
+            //CreateContact2();
+            UpdateFirstName(2, "lName2z");
             ReadById(2);
             Console.WriteLine("done ef");
             Console.ReadLine();
@@ -87,6 +88,16 @@ namespace EFCoreUI
             {
                 var i = db.Contacts.Where(x => x.Id == id).First();
                 Console.WriteLine($"{i.FirstName}, {i.LastName}");
+            }
+        }
+
+        private static void UpdateFirstName(int id, string fname)
+        {
+            using (var db = new ContactContext())
+            {
+                var i = db.Contacts.Where(x => x.Id == id).First();
+                i.FirstName = fname;
+                db.SaveChanges();
             }
         }
     }
