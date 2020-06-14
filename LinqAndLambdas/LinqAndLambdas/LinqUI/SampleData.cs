@@ -11,13 +11,7 @@ namespace LinqUI
         {
             List<ContactModel> output = new List<ContactModel>
             {
-                new ContactModel
-                {
-                    Id = 1,
-                    FirstName = "fName1",
-                    LastName = "lName1",
-                    Addresses = new List<int>{1,2,3}
-                },
+                new ContactModel{ Id = 1, FirstName = "fName1", LastName = "lName1", Addresses = new List<int>{1,2,3}},
                 new ContactModel{ Id = 2, FirstName = "fName2", LastName = "lName2", Addresses = new List<int>{1,2,3}},
                 new ContactModel{ Id = 3, FirstName = "fName3", LastName = "lName3", Addresses = new List<int>{1,2}},
                 new ContactModel{ Id = 4, FirstName = "fName4", LastName = "lName4", Addresses = new List<int>{1}},
