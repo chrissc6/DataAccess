@@ -81,12 +81,23 @@ namespace LinqUI
             var cData = SampleData.GetContactData();
             var aData = SampleData.GetAddressData();
 
+            //where
+            //var results = (from c in cData
+            //               where c.Addresses.Count > 1
+            //               select c);
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine($"{i.FirstName}, {i.LastName}");
+            //}
+
+            //join, select new
             var results = (from c in cData
-                           where c.Addresses.Count > 1
-                           select c);
+                           join a in aData
+                           on c.Id equals a.ContactId
+                           select new { c.FirstName, c.LastName, a.City, a.State });
             foreach (var i in results)
             {
-                Console.WriteLine($"{i.FirstName}, {i.LastName}");
+                Console.WriteLine($"{i.FirstName}, {i.LastName}, {i.City}, {i.State}");
             }
         }
     }
