@@ -25,10 +25,38 @@ namespace LinqUI
             //}
 
             //SELECT
-            var results = data.Select(x => x.FirstName);
+            //var results = data.Select(x => x.FirstName);
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            //TAKE
+            //var results = data.Take(2);
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine($"{i.FirstName}, {i.LastName}");
+            //}
+
+            //SKIP & TAKE
+            //var results = data.Skip(2).Take(2);
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine($"{i.FirstName}, {i.LastName}");
+            //}
+
+            //ORDERBY
+            //var results = data.OrderBy(x => x.LastName);
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine($"{i.FirstName}, {i.LastName}");
+            //}
+
+            //OrderByDescending
+            var results = data.OrderByDescending(x => x.LastName);
             foreach (var i in results)
             {
-                Console.WriteLine(i);
+                Console.WriteLine($"{i.FirstName}, {i.LastName}");
             }
         }
 
