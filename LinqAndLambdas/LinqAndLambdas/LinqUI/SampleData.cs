@@ -7,7 +7,7 @@ namespace LinqUI
 {
     public static class SampleData
     {
-        public static List<ContactModel> GetData()
+        public static List<ContactModel> GetContactData()
         {
             List<ContactModel> output = new List<ContactModel>
             {

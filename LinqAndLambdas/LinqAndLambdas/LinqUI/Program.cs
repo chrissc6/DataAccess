@@ -9,5 +9,10 @@ namespace LinqUI
             Console.WriteLine("done linq");
             Console.ReadLine();
         }
+
+        private static void LambdaTest()
+        {
+            var data = SampleData.GetContactData();
+        }
     }
 }
