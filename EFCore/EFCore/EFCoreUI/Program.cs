@@ -16,7 +16,7 @@ namespace EFCoreUI
             //UpdateFirstName(2, "lName2z");
             //ReadById(2);
             //RemovePhoneNumber(2, "513-555-0001");
-            RemoveContact(2);
+            //RemoveContact(2);
             Console.WriteLine("done ef");
             Console.ReadLine();
         }
