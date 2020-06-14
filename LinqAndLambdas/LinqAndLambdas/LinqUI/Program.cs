@@ -8,7 +8,8 @@ namespace LinqUI
     {
         static void Main(string[] args)
         {
-            LambdaTest();
+            //LambdaTest();
+            LinqTest();
             Console.WriteLine("done linq");
             Console.ReadLine();
         }
@@ -53,11 +54,11 @@ namespace LinqUI
             //}
 
             //OrderByDescending
-            var results = data.OrderByDescending(x => x.LastName);
-            foreach (var i in results)
-            {
-                Console.WriteLine($"{i.FirstName}, {i.LastName}");
-            }
+            //var results = data.OrderByDescending(x => x.LastName);
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine($"{i.FirstName}, {i.LastName}");
+            //}
         }
 
         //data.Where(x => x.Addresses.Count > 1);
@@ -73,6 +74,20 @@ namespace LinqUI
             //}
 
             return x.Addresses.Count > 1;
+        }
+
+        private static void LinqTest()
+        {
+            var cData = SampleData.GetContactData();
+            var aData = SampleData.GetAddressData();
+
+            var results = (from c in cData
+                           where c.Addresses.Count > 1
+                           select c);
+            foreach (var i in results)
+            {
+                Console.WriteLine($"{i.FirstName}, {i.LastName}");
+            }
         }
     }
 }
