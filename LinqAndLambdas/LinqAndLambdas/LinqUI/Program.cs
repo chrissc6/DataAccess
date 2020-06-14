@@ -9,7 +9,7 @@ namespace LinqUI
         static void Main(string[] args)
         {
             //LambdaTest();
-            LinqTest();
+            //LinqTest();
             Console.WriteLine("done linq");
             Console.ReadLine();
         }
@@ -91,14 +91,30 @@ namespace LinqUI
             //}
 
             //join, select new
-            var results = (from c in cData
-                           join a in aData
-                           on c.Id equals a.ContactId
-                           select new { c.FirstName, c.LastName, a.City, a.State });
-            foreach (var i in results)
-            {
-                Console.WriteLine($"{i.FirstName}, {i.LastName}, {i.City}, {i.State}");
-            }
+            //var results = (from c in cData
+            //               join a in aData
+            //               on c.Id equals a.ContactId
+            //               select new { c.FirstName, c.LastName, a.City, a.State });
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine($"{i.FirstName}, {i.LastName}, {i.City}, {i.State}");
+            //}
+
+            //one to many
+            //var results = (from c in cData
+            //               select new { c.FirstName, c.LastName, Addresses = aData.Where(x => x.ContactId == c.Id)});
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine($"{i.FirstName}, {i.LastName}, {i.Addresses.Count()}");
+            //}
+
+            //many to many
+            //var results = (from c in cData
+            //               select new { c.FirstName, c.LastName, Addresses = aData.Where(x => c.Addresses.Contains(x.Id)) });
+            //foreach (var i in results)
+            //{
+            //    Console.WriteLine($"{i.FirstName}, {i.LastName}, {i.Addresses.Count()}");
+            //}
         }
     }
 }
