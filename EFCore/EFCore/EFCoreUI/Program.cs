@@ -15,7 +15,8 @@ namespace EFCoreUI
             //CreateContact2();
             //UpdateFirstName(2, "lName2z");
             //ReadById(2);
-            RemovePhoneNumber(2, "513-555-0001");
+            //RemovePhoneNumber(2, "513-555-0001");
+            RemoveContact(2);
             Console.WriteLine("done ef");
             Console.ReadLine();
         }
@@ -111,6 +112,21 @@ namespace EFCoreUI
                     .Where(x => x.Id == id).First();
 
                 i.PhoneNumbers.RemoveAll(p => p.PhoneNumber == pNum);
+
+                db.SaveChanges();
+            }
+        }
+
+        private static void RemoveContact(int id)
+        {
+            using (var db = new ContactContext())
+            {
+                var i = db.Contacts
+                    .Include(e => e.EmailAddresses)
+                    .Include(p => p.PhoneNumbers)
+                    .Where(x => x.Id == id).First();
+
+                db.Contacts.Remove(i);
 
                 db.SaveChanges();
             }
