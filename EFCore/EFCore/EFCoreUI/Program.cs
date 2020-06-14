@@ -12,7 +12,8 @@ namespace EFCoreUI
         {
             //CreateContact();
             //ReadAll();
-            ReadById(1);
+            CreateContact2();
+            ReadById(2);
             Console.WriteLine("done ef");
             Console.ReadLine();
         }
@@ -28,6 +29,25 @@ namespace EFCoreUI
             c.EmailAddresses.Add(new Email { EmailAddress = "emailA2@mail.com" });
             c.PhoneNumbers.Add(new Phone { PhoneNumber = "513-555-0001" });
             c.PhoneNumbers.Add(new Phone { PhoneNumber = "513-555-0002" });
+
+            using (var db = new ContactContext())
+            {
+                db.Contacts.Add(c);
+                db.SaveChanges();
+            }
+        }
+
+        private static void CreateContact2()
+        {
+            var c = new Contact
+            {
+                FirstName = "fName2",
+                LastName = "lName2"
+            };
+            c.EmailAddresses.Add(new Email { EmailAddress = "emailB1@mail.com" });
+            c.EmailAddresses.Add(new Email { EmailAddress = "emailB2@mail.com" });
+            c.PhoneNumbers.Add(new Phone { PhoneNumber = "513-555-0001" });
+            c.PhoneNumbers.Add(new Phone { PhoneNumber = "513-555-1002" });
 
             using (var db = new ContactContext())
             {
